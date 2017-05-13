@@ -1,6 +1,7 @@
 package br.com.opetab.condominioapp.Adapter;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -21,10 +22,15 @@ public class HomeTabsAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         Fragment f = null;
+        Bundle args = new Bundle();
         if (position == 0) {
+            args.putInt("tipo", 0);
             f = new ChamadosFragment();
+            f.setArguments(args);
         }else{
+            args.putInt("tipo", 1);
             f = new ChamadosFragment();
+            f.setArguments(args);
         }
         return f;
     }

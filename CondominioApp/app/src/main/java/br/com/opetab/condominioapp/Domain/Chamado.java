@@ -5,6 +5,7 @@ import java.io.Serializable;
 
 public class Chamado implements Serializable {
 
+    public static final String KEY = "chamado";
     public long id;
     public String titulo;
     public String descricao;

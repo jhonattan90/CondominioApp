@@ -20,10 +20,12 @@ public class ChamadoAdapter extends RecyclerView.Adapter {
 
     private List<Chamado> chamados;
     private Context context;
+    private ChamadoOnClickListener onClickChamado;
 
-    public ChamadoAdapter(Context context, List<Chamado> chamados) {
+    public ChamadoAdapter(Context context, List<Chamado> chamados, ChamadoOnClickListener onClickChamado) {
         this.chamados = chamados;
         this.context = context;
+        this.onClickChamado = onClickChamado;
     }
 
     @Override
@@ -41,19 +43,29 @@ public class ChamadoAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         ChamadosViewHolder vHolder = (ChamadosViewHolder) holder;
-        Chamado c = chamados.get(position);
+        final Chamado c = chamados.get(position);
         vHolder.nome.setText(c.titulo);
         String situacao = "Situação: " + c.situacao;
         vHolder.situacao.setText(situacao);
         vHolder.descricao.setText(c.descricao);
         vHolder.usuario.setText(c.usuario.nome);
         Picasso.with(this.context).load(c.usuario.urlFoto).fit().into(vHolder.image);
+
+
+        vHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (onClickChamado != null) {
+                    onClickChamado.onClickChamado(c);
+                }
+            }
+        });
     }
 
-//    @Override
-//    public void onBindViewHolder(ChamadosViewHolder holder, int position) {
-//
-//    }
+
+    public interface ChamadoOnClickListener {
+        public void onClickChamado(Chamado c);
+    }
 
     public static class ChamadosViewHolder extends RecyclerView.ViewHolder {
 
