@@ -1,4 +1,4 @@
-package br.com.opetab.condominioapp.Model;
+package br.com.opetab.condominioapp.Adapter;
 
 import android.content.Context;
 import android.support.v4.app.Fragment;
