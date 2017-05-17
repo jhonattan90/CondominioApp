@@ -2,14 +2,24 @@ package br.com.opetab.condominioapp.Activitys;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import br.com.opetab.condominioapp.Adapter.ChamadoAdapter;
+import br.com.opetab.condominioapp.Adapter.ComentarioAdapter;
 import br.com.opetab.condominioapp.Domain.Chamado;
 import br.com.opetab.condominioapp.R;
+
+import static br.com.opetab.condominioapp.R.id.recyclerView;
 
 public class DetalhesActivity extends AppCompatActivity {
 
@@ -26,6 +36,7 @@ public class DetalhesActivity extends AppCompatActivity {
 
         setupToolbar();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         getSupportActionBar().setTitle(R.string.detalhes);
 
         nome = (TextView) findViewById(R.id.nome_chamado);
@@ -52,5 +63,12 @@ public class DetalhesActivity extends AppCompatActivity {
         descricao.setText(c.descricao);
         usuario.setText(c.usuario.nome);
         Picasso.with(this).load(c.usuario.urlFoto).fit().into(image);
+
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setAdapter(new ComentarioAdapter(this, c.comentarios));
     }
 }

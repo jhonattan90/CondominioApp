@@ -25,6 +25,18 @@ public class ChamadoService {
             u.urlFoto = "http://www.pieglobal.com/wp-content/uploads/2015/10/placeholder-user.png";
 
             c.usuario = u;
+
+            List<Comentario> comentarios = new ArrayList<>();
+
+            for (int j = 0 ; j < 15; j++){
+                Comentario comentario = new Comentario();
+                comentario.usuario = u;
+                comentario.comentario = "Um comentário de teste";
+                comentarios .add(comentario);
+            }
+
+            c.comentarios = comentarios;
+
             chamados.add(c);
         }
         return chamados;
@@ -47,6 +59,18 @@ public class ChamadoService {
             u.urlFoto = "http://www.pieglobal.com/wp-content/uploads/2015/10/placeholder-user.png";
 
             c.usuario = u;
+
+            List<Comentario> comentarios = new ArrayList<>();
+
+            for (int j = 0 ; j < 15; j++){
+                Comentario comentario = new Comentario();
+                comentario.usuario = u;
+                comentario.comentario = "Um comentário de teste";
+                comentarios .add(comentario);
+            }
+
+            c.comentarios = comentarios;
+
             chamados.add(c);
         }
 

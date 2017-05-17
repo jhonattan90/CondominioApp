@@ -1,6 +1,7 @@
 package br.com.opetab.condominioapp.Domain;
 
 import java.io.Serializable;
+import java.util.List;
 
 
 public class Chamado implements Serializable {
@@ -11,6 +12,7 @@ public class Chamado implements Serializable {
     public String descricao;
     public String situacao;
     public Usuario usuario;
+    public List<Comentario> comentarios;
 
     @Override
     public String toString() {
@@ -19,7 +21,8 @@ public class Chamado implements Serializable {
                 ", titulo='" + titulo + '\'' +
                 ", descricao='" + descricao + '\'' +
                 ", situacao='" + situacao + '\'' +
-                ", usuario=" + usuario.toString() +
+                ", usuario=" + usuario +
+                ", comentarios=" + comentarios +
                 '}';
     }
 }

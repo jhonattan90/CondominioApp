@@ -37,6 +37,7 @@
                 android:id="@+id/nome_chamado"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/black"
                 android:text="Nome do chamado"
                 android:textSize="20dp"
                 android:fontFamily="sans-serif"

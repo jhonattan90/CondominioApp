@@ -42,9 +42,6 @@ public class ChamadosFragment extends Fragment implements ChamadoAdapter.Chamado
                              Bundle savedInstanceState) {
 
 
-
-
-
         View view = inflater.inflate(R.layout.fragment_chamados, container, false);
 
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);

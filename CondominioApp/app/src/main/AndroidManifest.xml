@@ -25,12 +25,12 @@
         <activity
             android:name=".Activitys.MainActivity"
             android:label="Home" />
-        <activity android:name=".Activitys.DetalhesActivity"
-            >
-            <meta-data android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Activitys.MainActivity"
-                />
+        <activity android:name=".Activitys.DetalhesActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activitys.MainActivity" />
         </activity>
+        <activity android:name=".Activitys.NovoChamadoActivity"></activity>
     </application>
 
 </manifest>
