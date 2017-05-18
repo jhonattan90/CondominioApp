@@ -56,7 +56,10 @@ public class ChamadosFragment extends Fragment implements ChamadoAdapter.Chamado
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        load();
+    }
 
+    public void load(){
         Bundle args = getArguments();
 
         if (args.getInt("tipo") == 0) {
@@ -64,7 +67,6 @@ public class ChamadosFragment extends Fragment implements ChamadoAdapter.Chamado
         }else{
             getMeusChamados();
         }
-
     }
 
     public void getChamados(){

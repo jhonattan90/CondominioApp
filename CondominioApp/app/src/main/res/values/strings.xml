@@ -9,4 +9,6 @@
     <string name="comentarios">COMENTÁRIOS</string>
     <string name="detalhes">Detalhes</string>
     <string name="novo_chamado">Novo Chamado</string>
+    <string name="hint_titulo">Título</string>
+    <string name="hint_descricao">Descrição</string>
 </resources>

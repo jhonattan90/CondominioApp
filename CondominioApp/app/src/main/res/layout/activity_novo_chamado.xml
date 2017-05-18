@@ -11,4 +11,59 @@
         <include layout="@layout/include_toolbar"/>
 
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:orientation="vertical"
+            >
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                        <EditText
+                            android:id="@+id/tTitulo"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="text"
+                            android:maxLines="1"
+                            android:hint="@string/hint_titulo"
+                            android:layout_marginTop="5dp"/>
+                </android.support.design.widget.TextInputLayout>
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                        <EditText
+                            android:id="@+id/tDescricao"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textMultiLine"
+                            android:maxLines="10"
+                            android:gravity="top|left"
+                            android:hint="@string/hint_descricao"
+                            android:layout_marginTop="5dp"
+                            android:scrollbars="vertical"/>
+                </android.support.design.widget.TextInputLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="bottom">
+                        <Button
+                            android:id="@+id/btnSalvar"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/colorAccent"
+                            android:textColor="@color/white"
+                            android:text="Salvar"
+                            android:layout_gravity="bottom"/>
+
+                </LinearLayout>
+
+
+        </LinearLayout>
+
 </LinearLayout>
