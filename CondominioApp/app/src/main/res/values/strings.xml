@@ -11,4 +11,7 @@
     <string name="novo_chamado">Novo Chamado</string>
     <string name="hint_titulo">Título</string>
     <string name="hint_descricao">Descrição</string>
+    <string name="home_title">Home</string>
+    <string name="sobre_title">Sobre</string>
+    <string name="logout_title">Logout</string>
 </resources>
