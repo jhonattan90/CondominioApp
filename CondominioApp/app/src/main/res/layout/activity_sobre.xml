@@ -8,10 +8,68 @@
     tools:context="br.com.opetab.condominioapp.Activitys.SobreActivity">
 
     <include layout="@layout/include_toolbar"/>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:orientation="vertical">
+
     <TextView
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:text="@string/visao"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:text="@string/visao_desc"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:text="@string/missao"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/missao_desc"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:text="@string/valores"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/valores_desc"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="Teste"
-        android:textAlignment="center"/>
+        android:orientation="vertical"
+        android:gravity="bottom"
+        android:layout_marginBottom="20dp">
+        <Button
+            android:id="@+id/btnRota"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorAccent"
+            android:textColor="@color/white"
+            android:text="@string/rota"/>
+
+    </LinearLayout>
+
+</LinearLayout>
+
 </LinearLayout>

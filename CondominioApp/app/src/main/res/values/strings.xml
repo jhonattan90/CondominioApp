@@ -14,4 +14,14 @@
     <string name="home_title">Home</string>
     <string name="sobre_title">Sobre</string>
     <string name="logout_title">Logout</string>
+    <string name="bemvindo">Seja bem-vindo</string>
+    <string name="rota">Traçar rota</string>
+    <string name="missao">Missão:</string>
+    <string name="visao">Visão:</string>
+    <string name="valores">Valores:</string>
+    <string name="visao_desc">Ser a empresa prestadora de serviços mais confiável e da mais alta qualidade, excelência, presteza e agilidade em atendimento ao cliente.</string>
+    <string name="missao_desc">Ser reconhecida no mercado por buscar uma melhoria contínua, alcançando a excelência na qualidade dos serviços prestados a todos os clientes com credibilidade e confiabilidade.
+</string>
+    <string name="valores_desc">Ética, qualidade no atendimento, confiabilidade, praticidade e agilidade. Com o propósito de sempre buscar fazer melhor a cada dia, hoje nos sentimos colhedores dos frutos das muitas sementes que plantamos. Entre alguns deles, ressaltamos as muitas e verdadeiras amizades que conquistamos e o reconhecimento profissional. Mas  muitos frutos ainda queremos colher. A tarefa é difícil, mas não  é impossível.
+</string>
 </resources>
