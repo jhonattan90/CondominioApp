@@ -90,6 +90,17 @@
                 android:textSize="17dp" />
         </LinearLayout>
 
+            <Button
+                android:id="@+id/btnEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/enviarEmail"
+                android:textColor="@color/white"
+                android:background="@color/colorAccent"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"/>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="20dp"

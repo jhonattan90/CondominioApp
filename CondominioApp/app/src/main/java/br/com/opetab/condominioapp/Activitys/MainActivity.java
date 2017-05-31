@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         for (ChamadosFragment view: views) {
-            view.load();
+            view.startChamadosTask();
         }
     }
 

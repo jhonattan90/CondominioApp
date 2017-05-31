@@ -1,11 +1,15 @@
 package br.com.opetab.condominioapp.Activitys;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -47,6 +51,17 @@ public class DetalhesActivity extends AppCompatActivity {
 
         Chamado c = (Chamado) getIntent().getSerializableExtra(Chamado.KEY);
         setupView(c);
+
+        Button btnEmail = (Button) findViewById(R.id.btnEmail);
+        btnEmail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
+                        "mailto","sindico@chamacon.com.br", null));
+                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Chamado");
+                startActivity(Intent.createChooser(emailIntent, "Enviando email..."));
+            }
+        });
     }
 
     public void setupToolbar(){
