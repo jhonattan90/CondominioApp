@@ -14,6 +14,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.opetab.condominioapp.R;
+
 import static br.com.opetab.condominioapp.R.string.chamados;
 
 
@@ -93,7 +95,7 @@ public class ChamadoService {
         List<Chamado> chamados = new ArrayList<>();
 
         try {
-            URL apiURL = new URL("http://192.168.25.12:8080/Chamado/WS/chamado/recuperar");
+            URL apiURL = new URL(R.string.baseUrl + "/Chamado/WS/chamado/recuperar");
 
             HttpURLConnection connection;
             InputStream inputStream;
