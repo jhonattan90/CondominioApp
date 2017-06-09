@@ -30,14 +30,17 @@ public class Chamado implements Serializable {
         situacao = object.getString("situacao");
         usuario = new Usuario(object.getJSONObject("usuario"));
 
-        JSONArray comentariosJSON = object.getJSONArray("comentarios");
-        List<Comentario> cs = new ArrayList<>();
+        if(!object.isNull("comentarios")){
+            JSONArray comentariosJSON = object.getJSONArray("comentarios");
+            List<Comentario> cs = new ArrayList<>();
 
-        for (int i = 0; i < comentariosJSON.length() ;i++){
-            cs.add(new Comentario(comentariosJSON.getJSONObject(i)));
+            for (int i = 0; i < comentariosJSON.length() ;i++){
+                cs.add(new Comentario(comentariosJSON.getJSONObject(i)));
+            }
+
+            comentarios = cs;
         }
 
-        comentarios = cs;
     }
 
     @Override

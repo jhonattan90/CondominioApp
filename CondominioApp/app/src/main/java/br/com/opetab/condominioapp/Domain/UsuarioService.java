@@ -1,5 +1,7 @@
 package br.com.opetab.condominioapp.Domain;
 
+import android.content.SharedPreferences;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -30,7 +32,7 @@ public class UsuarioService {
     public static Usuario autenticar(Usuario usuario){
 
         try {
-            URL apiURL = new URL("http://192.168.25.56:8080/Chamado/WS/usuario/Autenticar");
+            URL apiURL = new URL(Constant.BASE_URL + "/Chamado/WS/usuario/Autenticar");
 
             JSONObject params = new JSONObject();
 
@@ -83,6 +85,7 @@ public class UsuarioService {
             UsuarioDTO c = new UsuarioDTO(json);
 
             if(c.usuario != null){
+
                 return c.usuario;
             }
 
@@ -94,23 +97,6 @@ public class UsuarioService {
         }
 
         return null;
-    }
-
-    private String getPostDataString(HashMap<String, String> params) throws UnsupportedEncodingException {
-        StringBuilder result = new StringBuilder();
-        boolean first = true;
-        for(Map.Entry<String, String> entry : params.entrySet()){
-            if (first)
-                first = false;
-            else
-                result.append("&");
-
-            result.append(URLEncoder.encode(entry.getKey(), "UTF-8"));
-            result.append("=");
-            result.append(URLEncoder.encode(entry.getValue(), "UTF-8"));
-        }
-
-        return result.toString();
     }
 
 }

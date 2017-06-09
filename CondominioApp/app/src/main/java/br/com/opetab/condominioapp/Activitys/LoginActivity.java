@@ -3,6 +3,7 @@ package br.com.opetab.condominioapp.Activitys;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -20,6 +21,7 @@ import com.facebook.Profile;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+import com.google.gson.Gson;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -30,6 +32,7 @@ import java.util.List;
 import br.com.opetab.condominioapp.Adapter.ChamadoAdapter;
 import br.com.opetab.condominioapp.Domain.Chamado;
 import br.com.opetab.condominioapp.Domain.ChamadoService;
+import br.com.opetab.condominioapp.Domain.Constant;
 import br.com.opetab.condominioapp.Domain.Usuario;
 import br.com.opetab.condominioapp.Domain.UsuarioService;
 import br.com.opetab.condominioapp.R;
@@ -40,7 +43,7 @@ import static br.com.opetab.condominioapp.R.string.chamados;
 
 public class LoginActivity extends AppCompatActivity {
 
-    CallbackManager callBackManager;
+    private CallbackManager callBackManager;
     public ProgressDialog progressDialog;
     public AutenticarTask autenticarTask;
 
@@ -49,9 +52,14 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        if(AccessToken.getCurrentAccessToken() != null){
-            go();
-        }else {
+        SharedPreferences prefs = this.getSharedPreferences("br.com.opetab.condominioapp", Context.MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = prefs.getString("usuarioLogado", "");
+        if(!json.isEmpty()){
+            Usuario usuario = gson.fromJson(json, Usuario.class);
+            Constant.usuarioLogado = usuario;
+        }
+
             callBackManager = CallbackManager.Factory.create();
             LoginButton loginButton = (LoginButton) findViewById(R.id.login_button);
             loginButton.setReadPermissions(Arrays.asList("public_profile", "email"));
@@ -67,8 +75,14 @@ public class LoginActivity extends AppCompatActivity {
 
                             try {
                                 Usuario usuario = new Usuario();
+
                                 usuario.nome = object.getString("name");
-                                usuario.email = object.getString("email");
+
+                                if(!object.isNull("email")) {
+                                    usuario.email = object.getString("email");
+                                }else{
+                                    usuario.email = "example@example.com";
+                                }
                                 usuario.urlFoto = object.getJSONObject("picture").getJSONObject("data").getString("url");
                                 autenticarTask = new AutenticarTask(LoginActivity.this, usuario);
                                 autenticarTask.execute();
@@ -104,6 +118,9 @@ public class LoginActivity extends AppCompatActivity {
                     Log.e("FB","Error");
                 }
             });
+
+        if(Constant.usuarioLogado != null){
+            go();
         }
 
     }
@@ -111,7 +128,9 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        callBackManager.onActivityResult(requestCode, resultCode, data);
+        if (callBackManager != null) {
+            callBackManager.onActivityResult(requestCode, resultCode, data);
+        }
     }
 
     public void go(){
@@ -146,6 +165,16 @@ public class LoginActivity extends AppCompatActivity {
 
             if(u != null){
                 Toast.makeText(context, "Usuario Autenticado com Sucesso", Toast.LENGTH_SHORT).show();
+                Constant.usuarioLogado = u;
+
+                SharedPreferences prefs = context.getSharedPreferences("br.com.opetab.condominioapp", Context.MODE_PRIVATE);
+                SharedPreferences.Editor prefsEditor = prefs.edit();
+
+                Gson gson = new Gson();
+                String json = gson.toJson(u);
+                prefsEditor.putString("usuarioLogado", json);
+                prefsEditor.commit();
+
                 go();
             }
 

@@ -26,8 +26,6 @@ import br.com.opetab.condominioapp.Domain.Chamado;
 import br.com.opetab.condominioapp.Domain.ChamadoService;
 import br.com.opetab.condominioapp.R;
 
-import static br.com.opetab.condominioapp.Domain.ChamadoService.getChamadosWS;
-
 
 public class ChamadosFragment extends Fragment implements ChamadoAdapter.ChamadoOnClickListener {
 
@@ -64,6 +62,14 @@ public class ChamadosFragment extends Fragment implements ChamadoAdapter.Chamado
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        Log.d("ChamadoFragmente", "onActivityCreated");
+        chamadosTask = new ChamadosTask(getContext(), this);
+        startChamadosTask();
+
+    }
+
+
+    public void reloadTask(){
         chamadosTask = new ChamadosTask(getContext(), this);
         startChamadosTask();
     }
@@ -99,8 +105,14 @@ public class ChamadosFragment extends Fragment implements ChamadoAdapter.Chamado
     public void onClickChamado(Chamado c) {
         Intent intent = new Intent(getContext(), DetalhesActivity.class);
         intent.putExtra(Chamado.KEY, c);
-
+        startActivityForResult(intent, 1);
         startActivity(intent);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        reloadTask();
     }
 
     private class ChamadosTask extends AsyncTask<Void, Void, List<Chamado>> {
@@ -124,9 +136,9 @@ public class ChamadosFragment extends Fragment implements ChamadoAdapter.Chamado
             Bundle args = getArguments();
 
             if (args.getInt("tipo") == 0) {
-                return ChamadoService.getChamadosWS();
+                return ChamadoService.getChamados();
             }else{
-                return ChamadoService.getChamadosWS();
+                return ChamadoService.getChamados();
             }
 
         }

@@ -25,5 +25,6 @@
     <string name="valores_desc">Ética, qualidade no atendimento, confiabilidade, praticidade e agilidade. Com o propósito de sempre buscar fazer melhor a cada dia, hoje nos sentimos colhedores dos frutos das muitas sementes que plantamos. Entre alguns deles, ressaltamos as muitas e verdadeiras amizades que conquistamos e o reconhecimento profissional. Mas  muitos frutos ainda queremos colher. A tarefa é difícil, mas não  é impossível.
 </string>
     <string name="enviarEmail">Notificar</string>
-    <string name="baseUrl">http://192.168.25.56:8080/Chamado/WS</string>
+    <string name="hint_comentar">Comentar</string>
+
 </resources>

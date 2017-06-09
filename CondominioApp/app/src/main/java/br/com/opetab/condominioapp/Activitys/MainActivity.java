@@ -1,6 +1,8 @@
 package br.com.opetab.condominioapp.Activitys;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -13,6 +15,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
@@ -26,13 +29,14 @@ import br.com.opetab.condominioapp.Adapter.HomeTabsAdapter;
 import br.com.opetab.condominioapp.Fragments.ChamadosFragment;
 import br.com.opetab.condominioapp.R;
 
+import static br.com.opetab.condominioapp.R.id.viewPager;
 import static java.security.AccessController.getContext;
 
 public class MainActivity extends AppCompatActivity {
 
     public DrawerLayout drawerLayout;
     public  List<ChamadosFragment> views;
-
+    public  ViewPager viewPager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,9 +58,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        for (ChamadosFragment view: views) {
-            view.startChamadosTask();
-        }
+        Log.d("MainActivity", "onActivityResult");
+        ChamadosFragment chamadoF = views.get(viewPager.getCurrentItem());
+        chamadoF.reloadTask();
+
+//        ChamadosFragment chamadosFragment = new ChamadosFragment();
+//        chamadosFragment.startChamadosTask();
+
     }
 
     public void setupToolbar(){
@@ -100,6 +108,10 @@ public class MainActivity extends AppCompatActivity {
 
                 break;
             case R.id.item_logout:
+                SharedPreferences prefs = getSharedPreferences("br.com.opetab.condominioapp", Context.MODE_PRIVATE);
+                SharedPreferences.Editor prefsEditor = prefs.edit();
+                prefsEditor.putString("usuarioLogado","");
+                prefsEditor.commit();
                 LoginManager.getInstance().logOut();
                 finish();
                 break;
@@ -125,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
         views.add(chamados);
         views.add(meusChamados);
 
-        ViewPager viewPager = (ViewPager) findViewById(R.id.viewPager);
+        viewPager = (ViewPager) findViewById(R.id.viewPager);
         viewPager.setOffscreenPageLimit(2);
         viewPager.setAdapter(new HomeTabsAdapter(this, getSupportFragmentManager(), views));
 

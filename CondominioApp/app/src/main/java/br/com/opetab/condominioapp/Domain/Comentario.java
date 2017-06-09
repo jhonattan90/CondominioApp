@@ -7,6 +7,7 @@ import java.io.Serializable;
 
 public class Comentario implements Serializable {
 
+    public Long id;
     public Usuario usuario;
     public String comentario;
 
@@ -15,6 +16,7 @@ public class Comentario implements Serializable {
     }
 
     public Comentario(JSONObject object) throws JSONException {
+        id = object.getLong("id");
         usuario = new Usuario(object.getJSONObject("usuario"));
         comentario = object.getString("comentario");
     }
@@ -23,6 +25,7 @@ public class Comentario implements Serializable {
     @Override
     public String toString() {
         return "Comentario{" +
+                "id=" + id +
                 "usuario=" + usuario +
                 ", comentario='" + comentario + '\'' +
                 '}';
